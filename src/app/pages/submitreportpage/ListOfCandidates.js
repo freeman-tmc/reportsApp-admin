@@ -26,7 +26,7 @@ class ListOfCandidates extends Component {
                 this.setState({
                     candidates: data,
                     filteredCandidates: data,
-                    classArray: newArray
+                    classesArray: newArray
                 })
             })
     }
@@ -35,7 +35,7 @@ class ListOfCandidates extends Component {
         // collects element position in condidates list
         // element's id is equal to elements index in candidates list 
         let j = parseInt(event.currentTarget.id, 10);
-        let changedArray = this.state.classArray.map((el, i) => {
+        let changedArray = this.state.classesArray.map((el, i) => {
             // changes selelected element class name
             return i === j ? 'selected' : '';
         });
@@ -60,18 +60,28 @@ class ListOfCandidates extends Component {
     render() {
         return (
             <div>
-                <input type="text" placeholder='Search'  onChange={this.searchCandidates} />
-                {this.state.filteredCandidates.map((el, i) => {
-                    return (
+                <div className="clear">
+                    <input className="candidates-search" type="search" placeholder="Search" aria-label="Search" onChange={this.searchCandidates} />
+                </div>
+                <div className="list">
+                    {this.state.filteredCandidates.map((el, i) => {
+                        return (
 
-                        <div className={this.state.classesArray[i]} onClick={this.selectCandidate} key={i} id={i}>
-                            <img src={el.avatar} alt="" />
-                            <p>{el.name}</p>
-                            <p>{el.email}</p>
-                        </div>
-                    )
-                })}
-                <button disabled={this.state.buttonDisabled} onClick={() => this.props.nextButton('companies', this.state.selectedCandidate, '')}>Next</button>
+                            <div className={'candidate-card ' + this.state.classesArray[i]} onClick={this.selectCandidate} key={i} id={i}>
+                                <div className="image-box">
+                                    <img src={el.avatar} alt="" />
+                                </div>
+                                <div className="candidate-info">
+                                    <p className="">{el.name}</p>
+                                    <p className="">{el.email}</p>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+                <div className="buttons">
+                    <button id="next" disabled={this.state.buttonDisabled} onClick={() => this.props.nextButton('companies', this.state.selectedCandidate, '')}>Next</button>
+                </div>
             </div>
 
         )
@@ -79,3 +89,4 @@ class ListOfCandidates extends Component {
 }
 
 export default ListOfCandidates;
+

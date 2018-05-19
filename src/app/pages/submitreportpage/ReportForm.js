@@ -44,24 +44,28 @@ class ReportForm extends Component {
 
         return (
             <div>
-                <input type="date" name="date" onChange={this.handleChange} />
-                <select name="phase" value="technical" onChange={this.handleChange}>
-                    <option value="technical">Technical</option>
-                    <option value="cv">CV</option>
-                    <option value="hr">HR</option>
-                    <option value="final">Final</option>
-                </select>
-                <select name="status" value="" onChange={this.handleChange}>
-                    <option value="">Select</option>
-                    <option value="passed">Passed</option>
-                    <option value="declined">Declined</option>
-                </select>
-                <label>
-                    Notes:
-                    <textarea name="note" cols="30" rows="10" placeholder="Enter notes" value={this.state.noteInput} onChange={this.handleChange} ></textarea>
-                </label>
-                <button onClick={() => this.props.backButton('companies')}>Back</button>
-                <button onClick={() => this.props.submitButton(this.state)} >Submit</button>
+                <div className="list">
+                    <input id="date" type="date" name="date" onChange={this.handleChange} />
+                    <select id="phase" name="phase" value="technical" onChange={this.handleChange}>
+                        <option value="technical">Technical</option>
+                        <option value="cv">CV</option>
+                        <option value="hr">HR</option>
+                        <option value="final">Final</option>
+                    </select>
+                    <select id="status" name="status" value="" onChange={this.handleChange}>
+                        <option value="">Select</option>
+                        <option value="passed">Passed</option>
+                        <option value="declined">Declined</option>
+                    </select>
+                    <label>
+                        Notes:
+                    <textarea id="note" name="note" cols="30" rows="10" placeholder="Enter notes" value={this.state.noteInput} onChange={this.handleChange} ></textarea>
+                    </label>
+                </div>
+                <div className="buttons">
+                    <button id="back" onClick={() => this.props.backButton('companies')}>Back</button>
+                    <button id="submit" onClick={() => this.props.submitButton(this.state)} >Submit</button>
+                </div>
             </div>
         )
 

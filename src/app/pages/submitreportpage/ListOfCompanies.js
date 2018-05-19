@@ -60,21 +60,27 @@ class ListOfCompanies extends Component {
     render() {
         return (
             <div>
-                <input type="text" placeholder='Search' onChange={this.searchCompanies} value={this.state.inputValue} />
-                {this.state.filteredCompanies.map((el, i) => {
-                    return (
+                <div className="clear">
+                    <input type="text" placeholder='Search' onChange={this.searchCompanies} value={this.state.inputValue} />
+                </div>
+                <div className="list">
+                    {this.state.filteredCompanies.map((el, i) => {
+                        return (
 
-                        <div className={this.state.classesArray[i]} onClick={this.selectCompany} key={i} id={i}>
-                            <p>{el.name}</p>
-                        </div>
-                    )
-                })}
-                <button onClick={() => this.props.backButton('candidates')}>Back</button>
-                <button disabled={this.state.buttonDisabled} onClick={() => this.props.nextButton('report submit', '', this.state.selectedCompany)}>Next</button>
+                            <div className={this.state.classesArray[i] + ' company'} onClick={this.selectCompany} key={i} id={i}>
+                                <p>{el.name}</p>
+                            </div>
+                        )
+                    })}
+                </div>
+                <div className="buttons">
+                    <button id="back" onClick={() => this.props.backButton('candidates')}>Back</button>
+                    <button id="next" disabled={this.state.buttonDisabled} onClick={() => this.props.nextButton('report submit', '', this.state.selectedCompany)}>Next</button>
+                </div>
             </div>
 
         )
     }
 }
 
-export default ListOfCompanies;
+export default ListOfCompanies; 

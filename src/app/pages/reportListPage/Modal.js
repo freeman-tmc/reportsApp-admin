@@ -1,10 +1,14 @@
 import React from 'react'
 
 const Modal = (props) => {
+    
     return (
         <div className="modal" onClick={props.handleClick}>
-            <div className="modal-box">
-                <h1>Candidate Name<span id="close">x</span></h1>
+            <div className="modal-content">
+                <div className="modal-header">
+                    <h1>{props.candidateName}</h1>
+                    <button className="close">&times;</button>
+                </div>
                 <div>
                     <p>Company</p>
                     <p className="candidate-info">{props.companyName}</p>
@@ -19,8 +23,8 @@ const Modal = (props) => {
                     <p>Notes</p>
                     <p className="candidate-note">{props.note}</p>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 

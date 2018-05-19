@@ -1,0 +1,332 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;  
+}
+
+.main-container {
+    min-height: 100%;
+    margin-bottom: -50px;
+    #push {
+        height: 50px;
+    }
+}
+
+    // header style
+nav {
+    height: 70px;
+    background: #292b2c;
+    color: #c3c3c3;
+    h1 {
+        line-height: 70px;
+        display: inline-block;
+    }
+    .links {
+        position: relative;
+        top: 20px;
+        float: right;
+        height: 30px;
+        button {
+            line-height: 30px;
+            vertical-align: bottom;
+            background: transparent;
+            border: 1px solid rgb(153, 82, 219);
+            border-radius: 2px;
+            width: 100px;
+            a {
+                color: #c3c3c3;
+                text-decoration: none;
+            } 
+        }
+    }
+}
+
+    // footer style
+footer {
+    background: #292b2c;
+    height: 50px;
+    p {
+        text-align: center;
+        color: #c3c3c3;
+        line-height: 50px;
+    }
+}
+
+    // modal style
+.modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .modal-content {
+        width: 70%;
+        height: fit-content;
+        background: white;
+        padding: 10px;
+        border-radius: 5px;
+        position: relative;
+        .modal-header {
+            border-bottom: 1px solid black;
+            .close {
+                position: absolute;
+                right: 15px;
+                top: 10px;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                border: none;
+                font-size: 1.5em;
+                text-align: center;
+                line-height: 25px;
+                background: transparent;
+                transition: background-color 0.6s;
+                &:hover {
+                    background: rgb(199, 195, 195);
+                }
+            }
+        }
+    }
+}
+
+    // reports page
+input {
+    width: 25%;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 25px 0;
+    border: 1px solid grey;
+    
+}
+
+.report {
+    width: 100%;
+    border-radius: 5px;
+    background: rgb(201, 198, 214);
+    margin: 15px 0;
+    padding: 5px;
+    font-size: 0.9em;
+    box-sizing: border-box;
+    .column {
+        display: inline-block;
+        border-right: 1px solid black;
+        padding: 0 5px 0 5px;
+        .caption {
+            font-size: 0.7em;
+            margin-top: 5px;
+        }
+    }
+    .column:last-child {
+        border: none;
+    }
+    .column:first-child, .column:nth-child(2) {
+        width: 26%;
+    }
+    .column:nth-child(3) {
+        width: 17%;
+    }
+    .column:nth-child(4) {
+        width: 12%;
+    }
+    .show-modal {
+        width: 32px;
+    }
+    .delete-report {
+        width: 32px;
+        margin-left: 10px;
+        background: transparent;
+        border: none;
+        font-size: 1.2em;
+        line-height: 32px;
+        vertical-align: top;
+    }
+}
+
+    // submit report page
+.main-nav {
+    display: inline-block;
+    width: 25%;
+    padding: 10px;
+    border-right: 1px solid black;
+    vertical-align: top;
+    box-sizing: border-box;
+    .navigation {
+        font-size: 1em;
+        margin-bottom: 20px;
+        p {
+            margin: 5px 0;
+            color: grey;
+            span {
+                margin-right: 8px;
+                border: 1px solid grey;
+                border-radius: 50%;
+                display: inline-block;
+                width: 18px;
+                text-align: center;
+            }
+        }
+    }
+    .preview {
+        border-top: 2px solid black;
+        padding-top: 20px;
+        .field {
+            font-size: 0.8em;
+            color: grey;
+            margin: 5px 0;
+        }
+        .data {
+            color: black;
+            font-size: 1em;
+        }
+    }
+}
+
+.main-section {
+    width: 75%;
+    display: inline-block;
+    box-sizing: border-box;
+    .clear {
+        overflow: hidden;
+        input {
+            width: 35%;
+            float: right;
+        }
+    }    
+}
+
+.selected {
+    border: 2px solid blue !important;
+}
+
+.buttons {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#next, #submit {
+    width: 55px;
+    background: rgb(95, 164, 243);
+    border: none;
+    float: right;
+    margin-top: 25px;
+    color: black;
+    padding: 5px;
+    border-radius: 3px;
+    &:disabled {
+        color: grey;
+        background: rgb(157, 196, 240);
+    }
+}
+
+#back {
+    width: 55px;
+    background: rgb(95, 164, 243);
+    border: none;
+    float: left;
+    margin-top: 25px;
+    color: black;
+    padding: 5px;
+    border-radius: 3px;
+    &:disabled {
+        color: grey;
+        background: rgb(157, 196, 240);
+    }
+}
+
+    // candidates list
+.list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: space-between;
+    width: 100%;
+    .candidate-card {
+        width: 46%;
+        height: 54px;
+        background: rgb(201, 198, 214);
+        margin: 1% 2%;
+        border: 2px solid transparent;
+        box-sizing: border-box;
+        border-radius: 5px;
+        .image-box {
+            width: 50px;
+            // height: 100%;
+            display: inline-block;
+            img {
+                display: block;
+                width: 100%;
+            
+            }
+        }
+        .candidate-info {
+            display: inline-block;
+            margin-left: 10px; 
+            vertical-align: top;
+            p {
+                font-size: 0.8em;
+                line-height: 25px;
+            }
+        }
+    }
+    // companies list
+    .company {
+        width: 80%;
+        background:rgb(201, 198, 214);
+        margin: 0.5% 0;
+        font-size: 0.8em;
+        padding: 5px;
+        border-radius: 5px;
+        border: 2px solid transparent;
+    }
+
+}
+
+// report form
+#phase, #status, #date {
+    width: 30.3%;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 25px 1.5%;
+    border: 1px solid grey;
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    font-size: 0.8em;
+    width: 97%;
+    // margin-bottom: 10px;
+}
+
+#note {
+    display: block;
+    font-size: 0.8em;
+    width: 100%;
+    resize: none;
+    margin-top: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
