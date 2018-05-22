@@ -71,7 +71,7 @@ class SubmitReportPage extends Component {
                     <Header />
                     <div className="container">
                         <div className="main-nav">
-                            <Navigation />
+                            <Navigation display={this.state.display} />
                             {this.state.selectedCandidate
                                 ? <SelectionPreview candidate={this.state.selectedCandidate} company={this.state.selectedCompany} />
                                 : ''}

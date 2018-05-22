@@ -61,7 +61,7 @@ class ListOfCandidates extends Component {
         return (
             <div>
                 <div className="clear">
-                    <input className="candidates-search" type="search" placeholder="Search" aria-label="Search" onChange={this.searchCandidates} />
+                    <input className="candidates-search" type="search" placeholder="Search" onChange={this.searchCandidates} />
                 </div>
                 <div className="list">
                     {this.state.filteredCandidates.map((el, i) => {

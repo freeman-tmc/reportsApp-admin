@@ -47,6 +47,11 @@ footer {
     color: #c3c3c3;
     line-height: 50px; }
 
+@keyframes fadein {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 .modal {
   position: fixed;
   width: 100%;
@@ -56,14 +61,16 @@ footer {
   background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  animation: 0.3s ease-out 0s 1 fadein; }
   .modal .modal-content {
-    width: 70%;
+    width: 600px;
     height: fit-content;
     background: white;
     padding: 10px;
     border-radius: 5px;
-    position: relative; }
+    position: relative;
+    font-size: 1.2em; }
     .modal .modal-content .modal-header {
       border-bottom: 1px solid black; }
       .modal .modal-content .modal-header .close {
@@ -78,16 +85,42 @@ footer {
         text-align: center;
         line-height: 25px;
         background: transparent;
-        transition: background-color 0.6s; }
+        transition: background-color 0.6s;
+        outline: none; }
         .modal .modal-content .modal-header .close:hover {
           background: #c7c3c3; }
+    .modal .modal-content .modal-field {
+      font-size: 0.7em;
+      margin-top: 15px;
+      color: grey; }
+    .modal .modal-content .report-data {
+      display: inline-block;
+      width: 38%;
+      margin-right: 2%;
+      box-sizing: border-box; }
+    .modal .modal-content .report-note {
+      width: 60%;
+      display: inline-block;
+      box-sizing: border-box;
+      vertical-align: top; }
+      .modal .modal-content .report-note .candidate-note {
+        font-size: 0.7em;
+        margin-top: 10px; }
 
 input {
   width: 25%;
   border-radius: 10px;
-  padding: 5px;
-  margin: 25px 0;
-  border: 1px solid grey; }
+  padding: 5px 5px 5px 30px;
+  margin: 25px 3px 25px 0;
+  border: 1px solid grey;
+  outline: none;
+  background-image: url(./img/search.svg);
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: 5px 3px; }
+  input:focus {
+    border-color: #9952db;
+    box-shadow: 0 0 5px 0 #9952db; }
 
 .report {
   width: 100%;
@@ -104,24 +137,28 @@ input {
     .report .column .caption {
       font-size: 0.7em;
       margin-top: 5px; }
-  .report .column:last-child {
-    border: none; }
+  .report .control {
+    border: none;
+    width: 10%;
+    float: right; }
   .report .column:first-child, .report .column:nth-child(2) {
-    width: 26%; }
+    width: 24%; }
   .report .column:nth-child(3) {
-    width: 17%; }
+    width: 20%; }
   .report .column:nth-child(4) {
-    width: 12%; }
+    width: 11%; }
   .report .show-modal {
-    width: 32px; }
+    width: 20px;
+    margin-left: 5px;
+    margin-top: 7px; }
   .report .delete-report {
-    width: 32px;
-    margin-left: 10px;
+    width: 45%;
     background: transparent;
     border: none;
     font-size: 1.2em;
     line-height: 32px;
-    vertical-align: top; }
+    vertical-align: top;
+    outline: none; }
 
 .main-nav {
   display: inline-block;
@@ -143,6 +180,11 @@ input {
         display: inline-block;
         width: 18px;
         text-align: center; }
+    .main-nav .navigation .active {
+      color: black;
+      font-weight: 500; }
+      .main-nav .navigation .active span {
+        border-color: black; }
   .main-nav .preview {
     border-top: 2px solid black;
     padding-top: 20px; }
@@ -165,7 +207,7 @@ input {
       float: right; }
 
 .selected {
-  border: 2px solid blue !important; }
+  border: 2px solid #9952db !important; }
 
 .buttons {
   width: 90%;
@@ -239,20 +281,30 @@ input {
   padding: 5px;
   margin: 25px 1.5%;
   border: 1px solid grey;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background: none;
+  outline: none; }
+  #phase:focus, #status:focus, #date:focus {
+    border-color: #9952db;
+    box-shadow: 0 0 5px 0 #9952db; }
 
 label {
   display: block;
   font-size: 0.8em;
-  width: 97%; }
+  width: 97%;
+  color: grey; }
 
 #note {
   display: block;
-  font-size: 0.8em;
+  font-size: 1em;
   width: 100%;
   resize: none;
   margin-top: 5px;
   padding: 5px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  outline: none; }
+  #note:focus {
+    border-color: #9952db;
+    box-shadow: 0 0 5px 0 #9952db; }
 
 /*# sourceMappingURL=index.css.map */

@@ -40,7 +40,17 @@ export const postReport = (data) => {
         body: JSON.stringify(data)
     }
 
-    fetch('http://localhost:3333/api/reports', settings)
+     return fetch('http://localhost:3333/api/reports', settings)
 
 }
+export const deleteReport = (id) => {
+ 
+    let settings = {
+        method: 'DELETE',
+    }
+
+    return fetch(`http://localhost:3333/api/reports/${id}`, settings)
+
+}
+
 

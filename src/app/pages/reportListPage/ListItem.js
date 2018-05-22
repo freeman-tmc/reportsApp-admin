@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Modal from './Modal'
 
+
 class ListItem extends Component {
     constructor(props) {
         super(props);
@@ -25,7 +26,9 @@ class ListItem extends Component {
         }
     }
 
+
     render() {
+
         return (
             <div className="report">
                 <div className="column">
@@ -44,9 +47,9 @@ class ListItem extends Component {
                     <p>{this.props.status}</p>
                     <p className="caption">Status</p>
                 </div>
-                <div className="column">
+                <div className="column control">
                     <img src="./img/eye.svg" className="show-modal" onClick={this.openModal} alt="" />
-                    <button className="delete-report">x</button>
+                    <button className="delete-report" onClick={() => this.props.removeReport(this.props.reportId)}>x</button>
                 </div>
                 {this.state.showModal ? <Modal {...this.props} handleClick={this.closeModal} /> : ''}
             </div>

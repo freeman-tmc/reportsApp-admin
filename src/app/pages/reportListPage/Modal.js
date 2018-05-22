@@ -9,18 +9,18 @@ const Modal = (props) => {
                     <h1>{props.candidateName}</h1>
                     <button className="close">&times;</button>
                 </div>
-                <div>
-                    <p>Company</p>
+                <div className="report-data">
+                    <p className="modal-field">Company</p>
                     <p className="candidate-info">{props.companyName}</p>
-                    <p>Interview Date</p>
+                    <p className="modal-field">Interview Date</p>
                     <p className="candidate-info">{props.interviewDate}</p>
-                    <p>Phase</p>
+                    <p className="modal-field">Phase</p>
                     <p className="candidate-info">{props.phase}</p>
-                    <p>Status</p>
+                    <p className="modal-field">Status</p>
                     <p className="candidate-info">{props.status}</p>
                 </div>
-                <div>
-                    <p>Notes</p>
+                <div className="report-note">
+                    <p className="field">Notes</p>
                     <p className="candidate-note">{props.note}</p>
                 </div>
             </div >

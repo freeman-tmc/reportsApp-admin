@@ -61,7 +61,7 @@ class ListOfCompanies extends Component {
         return (
             <div>
                 <div className="clear">
-                    <input type="text" placeholder='Search' onChange={this.searchCompanies} value={this.state.inputValue} />
+                    <input className="candidates-search" type="search" placeholder='Search' onChange={this.searchCompanies} value={this.state.inputValue} />
                 </div>
                 <div className="list">
                     {this.state.filteredCompanies.map((el, i) => {

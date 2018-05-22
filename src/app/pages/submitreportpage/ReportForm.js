@@ -6,7 +6,7 @@ class ReportForm extends Component {
         super(props);
         this.state = {
             dateInput: '',
-            phaseInput: '',
+            phaseInput: 'technical',
             statusInput: '',
             noteInput: '',
         }
