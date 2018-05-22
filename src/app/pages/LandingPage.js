@@ -1,12 +1,19 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 
 const LandingPage = (props) => {
     return (
-        <div>
-            <h1>Landing page</h1>
-            <Link to="/reports">Log in</Link>
-        </div>
+        <nav className="nav">
+            <div className="container">
+                <h1>Landing Page</h1>
+                <div className="links">
+                    <button>
+                        <Link to="/reports">Log in</Link>
+                    </button>
+                </div>
+            </div>
+        </nav>
     )
 }
 

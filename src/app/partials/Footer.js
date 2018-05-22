@@ -3,7 +3,9 @@ import React from 'react'
 const Footer = (props) => {
     return (
         <footer>
-            <p>Copyright&copy;2018</p>
+            <div className="container">
+                <p>Copyright&copy;2018</p>
+            </div>
         </footer>
     )
 }

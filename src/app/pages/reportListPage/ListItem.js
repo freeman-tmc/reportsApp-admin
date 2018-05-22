@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Modal from './Modal'
 
+
 class ListItem extends Component {
     constructor(props) {
         super(props);
@@ -9,7 +10,7 @@ class ListItem extends Component {
         };
     }
 
-    openModal = (event) => {
+    openModal = () => {
         this.setState({
             showModal: !this.state.showModal
         })
@@ -17,7 +18,7 @@ class ListItem extends Component {
 
     closeModal = (event) => {
         let modal = document.querySelector('.modal');
-        let close = document.querySelector('#close');
+        let close = document.querySelector('.close');
         if (event.target === modal || event.target === close) {
             this.setState({
                 showModal: !this.state.showModal
@@ -25,28 +26,30 @@ class ListItem extends Component {
         }
     }
 
+
     render() {
+
         return (
-            <div>
+            <div className="report">
                 <div className="column">
                     <p>{this.props.companyName}</p>
-                    <p>Company</p>
+                    <p className="caption">Company</p>
                 </div>
                 <div className="column">
                     <p>{this.props.candidateName}</p>
-                    <p>Candidate</p>
+                    <p className="caption">Candidate</p>
                 </div>
                 <div className="column">
                     <p>{this.props.interviewDate}</p>
-                    <p>Interview Date</p>
+                    <p className="caption">Interview Date</p>
                 </div>
                 <div className="column">
                     <p>{this.props.status}</p>
-                    <p>Status</p>
+                    <p className="caption">Status</p>
                 </div>
-                <div className="column">
-                    <p onClick={this.openModal}>eye</p>
-                    <p>x</p>
+                <div className="column control">
+                    <img src="./img/eye.svg" className="show-modal" onClick={this.openModal} alt="" />
+                    <button className="delete-report" onClick={() => this.props.removeReport(this.props.reportId)}>x</button>
                 </div>
                 {this.state.showModal ? <Modal {...this.props} handleClick={this.closeModal} /> : ''}
             </div>

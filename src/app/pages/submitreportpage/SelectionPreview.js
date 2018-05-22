@@ -3,11 +3,12 @@ import React from 'react';
 const SelectionPreview = (props) => {
     
     return (
-        <div>
-            <p>Candidate</p>
-            <p>{props.candidate.name}</p>
-            <p>Company</p>
-            <p>{props.company.name}</p>
+        <div className="preview">
+            <p className="field">Candidate</p>
+            <p className="data">{props.candidate.name}</p>
+            {props.company.name
+                ? <p className="field">Company</p> : ''}
+            <p className="data">{props.company.name}</p>
         </div>
     )
 }

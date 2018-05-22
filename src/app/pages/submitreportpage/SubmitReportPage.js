@@ -6,7 +6,7 @@ import SelectionPreview from './SelectionPreview';
 import ListOfCandidates from './ListOfCandidates';
 import ListOfCompanies from './ListOfCompanies';
 import ReportForm from './ReportForm';
-import {postReport} from '../../../services/reportsService';
+import { postReport } from '../../../services/reportsService';
 
 
 class SubmitReportPage extends Component {
@@ -30,11 +30,11 @@ class SubmitReportPage extends Component {
                 display: page,
                 selectedCompany: company
             })
-        } 
+        }
     }
 
     toPreviousPage = (page) => {
-        if(page === 'candidates') {
+        if (page === 'candidates') {
             this.setState({
                 display: page,
                 selectedCandidate: '',
@@ -66,23 +66,32 @@ class SubmitReportPage extends Component {
 
     render() {
         return (
-            <div>
-                <Header />
-                <Navigation />
-                {this.state.selectedCandidate
-                    ? <SelectionPreview candidate={this.state.selectedCandidate} company={this.state.selectedCompany} />
-                    : ''}
-                {this.state.display === 'candidates'
-                    ? <ListOfCandidates nextButton={this.toNextPage} />
-                    : ''}
-                {this.state.display === 'companies'
-                    ? <ListOfCompanies backButton={this.toPreviousPage} nextButton={this.toNextPage} />
-                    : ''}
-                {this.state.display === 'report submit'
-                    ? <ReportForm backButton={this.toPreviousPage} submitButton={this.submitReport} />
-                    : ''}
+            <React.Fragment>
+                <div className="main-container">
+                    <Header />
+                    <div className="container">
+                        <div className="main-nav">
+                            <Navigation display={this.state.display} />
+                            {this.state.selectedCandidate
+                                ? <SelectionPreview candidate={this.state.selectedCandidate} company={this.state.selectedCompany} />
+                                : ''}
+                        </div>
+                        <div className="main-section">
+                            {this.state.display === 'candidates'
+                                ? <ListOfCandidates nextButton={this.toNextPage} />
+                                : ''}
+                            {this.state.display === 'companies'
+                                ? <ListOfCompanies backButton={this.toPreviousPage} nextButton={this.toNextPage} />
+                                : ''}
+                            {this.state.display === 'report submit'
+                                ? <ReportForm backButton={this.toPreviousPage} submitButton={this.submitReport} />
+                                : ''}
+                        </div>
+                    </div>
+                    <div id="push"></div>
+                </div>
                 <Footer />
-            </div>
+            </React.Fragment>
         )
     }
 }
