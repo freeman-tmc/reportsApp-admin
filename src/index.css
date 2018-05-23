@@ -3,6 +3,9 @@
   padding: 0;
   font-family: sans-serif; }
 
+html {
+  overflow: scroll; }
+
 html, body, #root {
   height: 100%; }
 
@@ -37,7 +40,11 @@ nav {
       width: 100px; }
       nav .links button a {
         color: #c3c3c3;
-        text-decoration: none; }
+        text-decoration: none;
+        display: block; }
+      nav .links button .active-location {
+        background: #6fac60;
+        color: black; }
 
 footer {
   background: #292b2c;
@@ -99,13 +106,17 @@ footer {
       margin-right: 2%;
       box-sizing: border-box; }
     .modal .modal-content .report-note {
+      font-size: 0.7em;
+      margin-top: 15px;
+      color: grey;
       width: 60%;
       display: inline-block;
       box-sizing: border-box;
       vertical-align: top; }
       .modal .modal-content .report-note .candidate-note {
-        font-size: 0.7em;
-        margin-top: 10px; }
+        font-size: 1em;
+        margin-top: 5px;
+        color: black; }
 
 input {
   width: 25%;
@@ -172,10 +183,10 @@ input {
     margin-bottom: 20px; }
     .main-nav .navigation p {
       margin: 5px 0;
-      color: grey; }
+      color: #bbbbbb; }
       .main-nav .navigation p span {
         margin-right: 8px;
-        border: 1px solid grey;
+        border: 1px solid #bbbbbb;
         border-radius: 50%;
         display: inline-block;
         width: 18px;
@@ -275,18 +286,27 @@ input {
     border-radius: 5px;
     border: 2px solid transparent; }
 
-#phase, #status, #date {
-  width: 30.3%;
-  border-radius: 10px;
-  padding: 5px;
-  margin: 25px 1.5%;
-  border: 1px solid grey;
-  box-sizing: border-box;
-  background: none;
-  outline: none; }
-  #phase:focus, #status:focus, #date:focus {
-    border-color: #9952db;
-    box-shadow: 0 0 5px 0 #9952db; }
+.input-field {
+  width: 30%;
+  margin: 0px 1.5% 40px 1.5%;
+  position: relative; }
+  .input-field p {
+    color: gray;
+    font-size: 0.8em;
+    margin: 5px 0; }
+  .input-field #phase, .input-field #status, .input-field #date {
+    box-sizing: border-box;
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 0;
+    border: 1px solid grey;
+    background: none;
+    outline: none; }
+    .input-field #phase:focus, .input-field #status:focus, .input-field #date:focus {
+      border-color: #9952db;
+      box-shadow: 0 0 5px 0 #9952db; }
 
 label {
   display: block;
@@ -306,5 +326,15 @@ label {
   #note:focus {
     border-color: #9952db;
     box-shadow: 0 0 5px 0 #9952db; }
+
+#instruction {
+  width: 97%;
+  margin: 15px 0;
+  color: red; }
+
+#error {
+  color: red;
+  position: absolute;
+  bottom: -30px; }
 
 /*# sourceMappingURL=index.css.map */

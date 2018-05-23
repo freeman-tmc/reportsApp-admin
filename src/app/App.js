@@ -12,7 +12,7 @@ class App extends Component {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path="/reports" component={ReportLIstPage} />
-        <Route exact path="/createreport" component={SubmitReportPage} />
+        <Route path="/createreport" component={SubmitReportPage} />
       </Switch>  
     );
   }
