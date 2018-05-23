@@ -4,6 +4,10 @@
     font-family: sans-serif;
 }
 
+html {
+    overflow: scroll; 
+}
+
 html, body, #root {
     height: 100%;
 }
@@ -45,7 +49,12 @@ nav {
             a {
                 color: #c3c3c3;
                 text-decoration: none;
+                display: block;
             } 
+            .active-location {
+                background: rgb(111, 172, 96);
+                color: black;
+            }
         }
     }
 }
@@ -123,13 +132,17 @@ footer {
             box-sizing: border-box;
         }
         .report-note {
+            font-size: 0.7em;
+            margin-top: 15px;
+            color: grey;
             width: 60%;
             display: inline-block;
             box-sizing: border-box;
             vertical-align: top;
             .candidate-note {
-                font-size: 0.7em;
-                margin-top: 10px;
+                font-size: 1em;
+                margin-top: 5px;
+                color: black;
             }
         }
     }
@@ -214,10 +227,10 @@ input {
         margin-bottom: 20px;
         p {
             margin: 5px 0;
-            color: grey;
+            color: rgb(187, 187, 187);
             span {
                 margin-right: 8px;
-                border: 1px solid grey;
+                border: 1px solid rgb(187, 187, 187);
                 border-radius: 50%;
                 display: inline-block;
                 width: 18px;
@@ -347,20 +360,32 @@ input {
 }
 
 // report form
-#phase, #status, #date {
-    width: 30.3%;
-    border-radius: 10px;
-    padding: 5px;
-    margin: 25px 1.5%;
-    border: 1px solid grey;
-    box-sizing: border-box;
-    background: none;
-    outline: none;
-    &:focus {
-        border-color: rgb(153, 82, 219);
-        box-shadow: 0 0 5px 0 rgb(153, 82, 219);
+.input-field {
+    width: 30%;
+    margin: 0px 1.5% 40px 1.5%;
+    position: relative;
+    p {
+        color: gray;
+        font-size: 0.8em;
+        margin: 5px 0;
+    }
+    #phase, #status, #date {
+        box-sizing: border-box;
+        width: 100%;
+        height: 30px;
+        border-radius: 10px;
+        padding: 5px;
+        margin: 0;
+        border: 1px solid grey;
+        background: none;
+        outline: none;
+        &:focus {
+            border-color: rgb(153, 82, 219);
+            box-shadow: 0 0 5px 0 rgb(153, 82, 219);
+        }
     }
 }
+
 
 label {
     display: block;
@@ -382,6 +407,18 @@ label {
         border-color: rgb(153, 82, 219);
         box-shadow: 0 0 5px 0 rgb(153, 82, 219);
     }
+}
+
+#instruction {
+    width: 97%;
+    margin: 15px 0;
+    color: red;
+}
+
+#error {
+    color: red;
+    position: absolute;
+    bottom: -30px;
 }
 
 
