@@ -12,7 +12,9 @@ class ListOfCompanies extends Component {
             classesArray: [],
             selectCompany: {},
             buttonDisabled: true,
-            inputValue: ''
+            inputValue: '',
+            error: false,
+            searchError: false
         }
     }
 
@@ -27,6 +29,11 @@ class ListOfCompanies extends Component {
                     companies: data,
                     filteredCompanies: data,
                     classArray: newArray
+                })
+            })
+            .catch(error => {
+                this.setState({
+                    error: true
                 })
             })
     }
@@ -54,29 +61,36 @@ class ListOfCompanies extends Component {
         this.setState({
             filteredCompanies: filteredList,
             inputValue: event.target.value,
+            searchError: !filteredList.length
         })
     }
 
     render() {
         return (
-            <div>
-                <div className="clear">
-                    <input className="candidates-search" type="search" placeholder='Search' onChange={this.searchCompanies} value={this.state.inputValue} />
-                </div>
-                <div className="list">
-                    {this.state.filteredCompanies.map((el, i) => {
-                        return (
 
-                            <div className={this.state.classesArray[i] + ' company'} onClick={this.selectCompany} key={i} id={i}>
-                                <p>{el.name}</p>
+            <div>
+                {this.state.error ? <h1 className="error-info">Server error!</h1> :
+                    <React.Fragment>
+                        <div className="clear">
+                            <input className="candidates-search" type="search" placeholder='Search' onChange={this.searchCompanies} value={this.state.inputValue} />
+                        </div>
+                        {this.state.searchError
+                            ? <h1 className="error-info">No results!</h1>
+                            : <div className="list">
+                                {this.state.filteredCompanies.map((el, i) => {
+                                    return (
+                                        <div className={this.state.classesArray[i] + ' company'} onClick={this.selectCompany} key={i} id={i}>
+                                            <p>{el.name}</p>
+                                        </div>
+                                    )
+                                })}
                             </div>
-                        )
-                    })}
-                </div>
-                <div className="buttons">
-                    <button id="back" onClick={() => this.props.backButton('candidates')}>Back</button>
-                    <button id="next" disabled={this.state.buttonDisabled} onClick={() => this.props.nextButton('report submit', '', this.state.selectedCompany)}>Next</button>
-                </div>
+                            }
+                        <div className="buttons">
+                            <button id="back" onClick={() => this.props.backButton('candidates')}>Back</button>
+                            <button id="next" disabled={this.state.buttonDisabled} onClick={() => this.props.nextButton('report submit', '', this.state.selectedCompany)}>Next</button>
+                        </div>
+                    </React.Fragment>}
             </div>
 
         )

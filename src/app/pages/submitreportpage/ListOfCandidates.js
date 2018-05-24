@@ -12,7 +12,9 @@ class ListOfCandidates extends Component {
             classesArray: [],
             selectedCandidate: {},
             buttonDisabled: true,
-            inputValue: ''
+            inputValue: '',
+            error: false,
+            searchError: false
         }
     }
 
@@ -29,6 +31,13 @@ class ListOfCandidates extends Component {
                     classesArray: newArray
                 })
             })
+            .catch(error => {
+                this.setState({
+                    error: true
+                })
+            })
+
+
     }
 
     selectCandidate = (event) => {
@@ -54,34 +63,42 @@ class ListOfCandidates extends Component {
         this.setState({
             filteredCandidates: filteredList,
             inputValue: event.target.value,
+            searchError: !filteredList.length
         })
     }
 
     render() {
         return (
             <div>
-                <div className="clear">
-                    <input className="candidates-search" type="search" placeholder="Search" onChange={this.searchCandidates} />
-                </div>
-                <div className="list">
-                    {this.state.filteredCandidates.map((el, i) => {
-                        return (
+                {this.state.error ? <h1 className="error-info">Server error!</h1> :
+                    <React.Fragment>
+                        <div className="clear">
+                            <input className="candidates-search" type="search" placeholder="Search" onChange={this.searchCandidates} />
+                        </div>
+                        {this.state.searchError
+                            ? <h1 className="error-info">No results!</h1>
+                            : <div className="list">
+                                {this.state.filteredCandidates.map((el, i) => {
+                                    return (
 
-                            <div className={'candidate-card ' + this.state.classesArray[i]} onClick={this.selectCandidate} key={i} id={i}>
-                                <div className="image-box">
-                                    <img src={el.avatar} alt="" />
-                                </div>
-                                <div className="candidate-info">
-                                    <p className="">{el.name}</p>
-                                    <p className="">{el.email}</p>
-                                </div>
+                                        <div className={'candidate-card ' + this.state.classesArray[i]} onClick={this.selectCandidate} key={i} id={i}>
+                                            <div className="image-box">
+                                                <img src={el.avatar} alt="" />
+                                            </div>
+                                            <div className="candidate-info">
+                                                <p className="">{el.name}</p>
+                                                <p className="">{el.email}</p>
+                                            </div>
+                                        </div>
+
+                                    )
+                                })}
                             </div>
-                        )
-                    })}
-                </div>
-                <div className="buttons">
-                    <button id="next" disabled={this.state.buttonDisabled} onClick={() => this.props.nextButton('companies', this.state.selectedCandidate, '')}>Next</button>
-                </div>
+                            }
+                        <div className="buttons">
+                            <button id="next" disabled={this.state.buttonDisabled} onClick={() => this.props.nextButton('companies', this.state.selectedCandidate, '')}>Next</button>
+                        </div>
+                    </React.Fragment>}
             </div>
 
         )
