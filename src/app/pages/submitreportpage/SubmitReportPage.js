@@ -16,6 +16,7 @@ class SubmitReportPage extends Component {
             display: 'candidates',
             selectedCandidate: '',
             selectedCompany: '',
+            error: false
         };
     }
 
@@ -59,8 +60,15 @@ class SubmitReportPage extends Component {
             status: data.statusInput,
             note: data.noteInput
         }
-        postReport(submitData);
-        this.props.history.push('/');
+        postReport(submitData)
+        .then(() => {
+            this.props.history.push('/');
+        })
+        .catch(error => {
+            this.setState({
+                error: true
+            })
+        })
 
     }
 
@@ -84,7 +92,7 @@ class SubmitReportPage extends Component {
                                 ? <ListOfCompanies backButton={this.toPreviousPage} nextButton={this.toNextPage} />
                                 : ''}
                             {this.state.display === 'report submit'
-                                ? <ReportForm backButton={this.toPreviousPage} submitButton={this.submitReport} />
+                                ? <ReportForm backButton={this.toPreviousPage} submitButton={this.submitReport} error={this.state.error}/>
                                 : ''}
                         </div>
                     </div>

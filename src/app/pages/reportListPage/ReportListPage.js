@@ -12,7 +12,9 @@ class ReportListPage extends React.Component {
         this.state = {
             reports: [],
             filteredReports: [],
-            searchTerm: ''
+            searchTerm: '',
+            error: false,
+            searchError: false
         };
     }
 
@@ -21,7 +23,13 @@ class ReportListPage extends React.Component {
             .then(data => {
                 this.setState({
                     reports: data,
-                    filteredReports: data
+                    filteredReports: data,
+                    error: false
+                })
+            })
+            .catch(() => {
+                this.setState({
+                    error: true
                 })
             })
 
@@ -39,16 +47,17 @@ class ReportListPage extends React.Component {
             })
     }
 
-    filter = (event) => {
+    searchReports = (event) => {
         let term = event.target.value.toLowerCase();
-        let filteredList =  this.state.reports.filter(el => {
+        let filteredList = this.state.reports.filter(el => {
             let candidate = el.candidateName.toLowerCase().includes(term);
             let company = el.companyName.toLowerCase().includes(term)
             return candidate || company;
         });
         this.setState({
             filteredReports: filteredList,
-            searchTerm: term
+            searchTerm: term,
+            searchError: !filteredList.length
         })
     }
 
@@ -57,14 +66,18 @@ class ReportListPage extends React.Component {
             <React.Fragment>
                 <div className="main-container">
                     <Header />
-                    <div className="container">
-                        <input className="report-search" type="search" placeholder="Search" onChange={this.filter} value={this.state.searchTerm} />
-                        <div id="reports-list">
-                            {this.state.filteredReports.map((el, i) => {
-                                return <ListItem {...el} removeReport={this.removeReport} key={i} />
-                            })}
-                        </div>
-                    </div>
+                    {this.state.error ? <h1 className="error-info">Server error!</h1> :
+                        <div className="container">
+                            <input className="report-search" type="search" placeholder="Search" onChange={this.searchReports} value={this.state.searchTerm} />
+                            {this.state.searchError
+                                ? <h1 className="error-info">No results!</h1>
+                                : <div id="reports-list">
+                                    {this.state.filteredReports.map((el, i) => {
+                                        return <ListItem {...el} removeReport={this.removeReport} key={i} />
+                                    })}
+                                </div>
+                            }
+                        </div>}
                     <div id="push"></div>
                 </div>
                 <Footer />
